@@ -1,6 +1,7 @@
 import re
 import string
 import hazm
+import pandas as pd
 
 
 class preprocessing:
@@ -56,3 +57,18 @@ class preprocessing:
     for token in words:
       result.add(self.lemmatizer.lemmatize(token))
     return list(result)
+  
+
+def preprocessing_text(df : pd.DataFrame, column : str) -> pd.DataFrame:
+  pp = preprocessing()
+
+
+  df['Text - preproces'] = df[column].apply(pp._remove_diacritics)
+  df['Text - preproces'] = df['Text - preproces'].apply(pp._remove_punctuations)
+  df['Text - preproces'] = df['Text - preproces'].apply(pp._remove_repeating_char)
+  df['Text - preproces'] = df['Text - preproces'].apply(pp._normalize_persian)
+  df['Text - preproces'] = df['Text - preproces'].apply(pp._tokenize)
+  df['Text - preproces'] = df['Text - preproces'].apply(pp._remove_stopwords)
+  df['Text - preproces'] = df['Text - preproces'].apply(pp._lemmatizer)
+
+  return df
