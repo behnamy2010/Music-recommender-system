@@ -1,22 +1,22 @@
 import pandas as pd
 
 
-class StandardScaler:
+class MinMaxScaler:
     def __init__(self) -> None:
-        self._mean = None
-        self._std = None
+        self._min = None
+        self._max = None
     
 
     def fit(self , df : pd.DataFrame) -> None:
-        self._mean = df.mean()
-        self._std = df.std()
+        self._min = df.min()
+        self._max = df.max()
 
     
 
     def transform(self, df : pd.DataFrame) -> pd.DataFrame:
         
-        if self._mean is None or self._std is None:
+        if self._max is None or self._min is None:
             raise Exception("The scaler has not been fitted yet!")
     
 
-        return (df - self._mean) / self._std
+        return (df - self._min) / (self._max - self._min)
