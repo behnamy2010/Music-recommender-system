@@ -47,5 +47,5 @@ def pre_process(df : pd.DataFrame) -> pd.DataFrame:
     data_sets = pd.concat([df_selected_Standardize, vector_lyric], axis=1)
 
 
-    return data_sets.shape
+    return data_sets
 
