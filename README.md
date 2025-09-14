@@ -1,70 +1,85 @@
-# Music Recommender System
+👌 حتما — یک **README.md مینیمال** برات آماده کردم که توضیح کوتاه بده، طریقه نصب و اجرا (محلی و Docker) و اجرای تست‌ها رو نشون بده.
 
-## Description
-This repository contains the code for a music recommender system for Radio Javan. The system is designed to suggest songs based on user preferences and listening history. It utilizes TF-IDF for text analysis and incorporates various music features such as danceability, energy, and more.
+---
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+📄 `README.md`
 
-## Installation
+````markdown
+# RadioJavan CLI (Minimal)
 
-### Prerequisites
-- Python 3.6 or higher
-- Jupyter Notebook
+A minimal command-line tool that takes a song title and returns 10 recommendations.  
+Data is loaded from a CSV file and a pre-trained similarity model (pickle).
 
-### Steps
-1. Clone the repository
-    ```sh
-    git clone https://github.com/parvvaresh/Music-recommender-system.git
-    ```
-2. Navigate to the project directory
-    ```sh
-    cd Music-recommender-system
-    ```
-3. Create and activate a virtual environment
-    ```sh
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-    ```
-4. Install the required packages
-    ```sh
-    pip install -r requirements.txt
-    ```
+---
 
-## Usage
+## 📦 Installation
 
-### Jupyter Notebook
-1. Start Jupyter Notebook
-    ```sh
-    jupyter notebook
-    ```
-2. Open the `.ipynb` file in the Jupyter interface to run the code cells interactively.
+Clone the repository and install dependencies:
 
-### Running the Script
-1. Ensure your virtual environment is activated
-2. Run the Python script
-    ```sh
-    python script_name.py
-    ```
+```bash
+git https://github.com/parvvaresh/Music-recommender-system
+cd Music-recommender-system
+pip install -r requirements.txt
+````
 
-## Contributing
-Contributions are welcome! Please follow these steps to contribute:
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Create a new Pull Request
+---
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## ▶️ Usage
 
-## Acknowledgements
-- Any libraries, datasets, or tutorials that were particularly helpful.
-- Any contributors or collaborators.
+Run locally:
 
-## Features
-- **TF-IDF for Text Analysis**: Utilizes Term Frequency-Inverse Document Frequency (TF-IDF) to analyze textual data.
-- **Music Features**: Incorporates various music features such as danceability, energy, and more to enhance recommendations.
+```bash
+python RJ_Recommendation_System.py "Gentleman"
+```
+
+Example output:
+
+```
+ rank          musicName     artistName
+    1       Nakoni Bavar        Zedbazi
+    2          Mr. Lodeh   Amir Tataloo
+    3 To Ke Nisti Pisham          Masih
+    4             Moohat Mohsen Yeganeh
+    5             Doctor           Sasy
+    6      Harjaye Shahr     Ali Yasini
+    7        Tekoon Bede          Arash
+    8     Ashegham Kardi   Hoorosh Band
+    9             Ey Vay          Sahar
+   10          Ey Joonam     Sami Beigi
+```
+
+---
+
+## 🐳 Run with Docker
+
+Build the image:
+
+```bash
+docker build -t radiojavan-cli .
+```
+
+Run:
+
+```bash
+docker run --rm radiojavan-cli "Gentleman"
+```
+
+---
+
+## ✅ Tests
+
+Run tests with **pytest**:
+
+```bash
+pytest -v
+```
+
+---
+
+## 🧹 Lint
+
+Run linter (**flake8**):
+
+```bash
+flake8 .
+```
