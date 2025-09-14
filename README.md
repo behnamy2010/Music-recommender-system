@@ -1,11 +1,5 @@
-👌 حتما — یک **README.md مینیمال** برات آماده کردم که توضیح کوتاه بده، طریقه نصب و اجرا (محلی و Docker) و اجرای تست‌ها رو نشون بده.
 
----
-
-📄 `README.md`
-
-````markdown
-# RadioJavan CLI (Minimal)
+# RadioJavan Recommendation System CLI 
 
 A minimal command-line tool that takes a song title and returns 10 recommendations.  
 Data is loaded from a CSV file and a pre-trained similarity model (pickle).
